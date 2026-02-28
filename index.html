@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyFlow Pro | 智能學習管理系統</title>
+    <!-- PWA相關 -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4f46e5">
+    <!-- 樣式 -->
+    <link rel="stylesheet" href="style.css">
+    <!-- 圖標庫 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 圖表庫 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- 日期處理 -->
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.9/dayjs.min.js"></script>
+</head>
+<body>
+    <!-- 導航欄 -->
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>StudyFlow Pro</span>
+            </div>
+        </div>
+        <div class="nav-menu">
+            <a href="#dashboard" class="nav-link active">
+                <i class="fas fa-home"></i> 儀表板
+            </a>
+            <a href="#planner" class="nav-link">
+                <i class="fas fa-calendar-alt"></i> 學習計畫
+            </a>
+            <a href="#pomodoro" class="nav-link">
+                <i class="fas fa-clock"></i> 番茄鐘
+            </a>
+            <a href="#analytics" class="nav-link">
+                <i class="fas fa-chart-line"></i> 分析報告
+            </a>
+            <a href="#goals" class="nav-link">
+                <i class="fas fa-flag"></i> 目標管理
+            </a>
+        </div>
+        <div class="user-profile">
+            <div class="level-badge" id="userLevel">Lv.1</div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 進度條 -->
+    <div class="progress-bar" id="globalProgress">
+        <div class="progress-fill" style="width: 30%"></div>
+    </div>
+
+    <!-- 主要內容區域 -->
+    <main class="container">
+        <!-- 歡迎區塊 -->
+        <section class="hero-section">
+            <div class="welcome-card">
+                <h1 class="welcome-title">
+                    歡迎回來，<span id="userName">同學</span>！
+                </h1>
+                <p class="welcome-subtitle">
+                    今天已學習 <span class="highlight" id="todayStudyTime">0小時</span>，
+                    完成 <span class="highlight" id="todayTasks">0/0</span> 項任務
+                </p>
+                <div class="quick-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-fire"></i>
+                        <div class="stat-content">
+                            <div class="stat-value" id="streakDays">0</div>
+                            <div class="stat-label">連續學習天數</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-star"></i>
+                        <div class="stat-content">
+                            <div class="stat-value" id="totalXP">0</div>
+                            <div class="stat-label">經驗值</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-check-circle"></i>
+                        <div class="stat-content">
+                            <div class="stat-value" id="completionRate">0%</div>
+                            <div class="stat-label">任務完成率</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="motivation-card">
+                <div class="motivation-quote">
+                    <i class="fas fa-quote-left"></i>
+                    <p id="dailyQuote">成功不是偶然，而是每天堅持的結果</p>
+                    <i class="fas fa-quote-right"></i>
+                </div>
+                <button class="btn-primary" id="startPomodoro">
+                    <i class="fas fa-play"></i> 開始專注學習
+                </button>
+            </div>
+        </section>
+
+        <!-- 各個功能模組區域 -->
+        <div class="module-section" id="plannerModule">
+            <!-- 學習計畫表 -->
+        </div>
+
+        <div class="module-section" id="pomodoroModule">
+            <!-- 番茄鐘 -->
+        </div>
+
+        <div class="module-section" id="analyticsModule">
+            <!-- 數據分析 -->
+        </div>
+
+        <div class="module-section" id="goalsModule">
+            <!-- 目標管理 -->
+        </div>
+    </main>
+
+    <!-- 底部導航（行動端） -->
+    <nav class="bottom-nav">
+        <!-- 行動端導航按鈕 -->
+    </nav>
+
+    <!-- 通知中心 -->
+    <div class="notification-center" id="notificationCenter">
+        <!-- 通知顯示 -->
+    </div>
+
+    <script src="script.js"></script>
+    <script src="modules/storage.js"></script>
+    <script src="modules/planner.js"></script>
+    <script src="modules/pomodoro.js"></script>
+    <script src="modules/analytics.js"></script>
+    <script src="modules/goals.js"></script>
+</body>
+</html>
